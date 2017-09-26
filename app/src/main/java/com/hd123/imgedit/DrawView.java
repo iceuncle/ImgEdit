@@ -133,7 +133,7 @@ public class DrawView extends ScrollView {
 
 
     private void generatorBit() {
-        mDrawBit = Bitmap.createBitmap(pictureWidth, pictureHeight, Bitmap.Config.ARGB_8888);
+        mDrawBit = Bitmap.createBitmap(pictureWidth, pictureHeight, Bitmap.Config.ARGB_4444);
         mPaintCanvas = new Canvas(mDrawBit);
     }
 
@@ -363,6 +363,7 @@ public class DrawView extends ScrollView {
                             last_y = y;
                         } else {
                             mCurrentMode = IDLE_MODE;
+                            getParent().requestDisallowInterceptTouchEvent(false);
 //                            isShowHelpBox = false;
 //                            invalidate();
                         }
@@ -425,7 +426,7 @@ public class DrawView extends ScrollView {
                         mPath.lineTo(x, y);
 
                         bmTouchLayer = Bitmap.createBitmap(pictureWidth, pictureHeight,
-                                Bitmap.Config.ARGB_8888);
+                                Bitmap.Config.ARGB_4444);
                         Canvas canvas = new Canvas();
                         canvas.setBitmap(bmTouchLayer);
 
@@ -648,7 +649,7 @@ public class DrawView extends ScrollView {
                 case MOSAIC:
 
                     bmTouchLayer = Bitmap.createBitmap(pictureWidth, pictureHeight,
-                            Bitmap.Config.ARGB_8888);
+                            Bitmap.Config.ARGB_4444);
                     Canvas canvas = new Canvas();
                     canvas.setBitmap(bmTouchLayer);
                     canvas.drawPath(savePath.get(i).path, mosaicPaint);
@@ -695,7 +696,7 @@ public class DrawView extends ScrollView {
                 case MOSAIC:
 
                     bmTouchLayer = Bitmap.createBitmap(pictureWidth, pictureHeight,
-                            Bitmap.Config.ARGB_8888);
+                            Bitmap.Config.ARGB_4444);
                     Canvas canvas = new Canvas();
                     canvas.setBitmap(bmTouchLayer);
                     canvas.drawPath(savePath.get(i).path, mosaicPaint);
@@ -780,7 +781,7 @@ public class DrawView extends ScrollView {
 
 
         Bitmap mosaicBitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.ARGB_8888);
+                Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(mosaicBitmap);
 
         int horCount = (int) Math.ceil(width / (float) radius);
