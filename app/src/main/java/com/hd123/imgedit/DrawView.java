@@ -814,6 +814,21 @@ public class DrawView extends ScrollView {
     }
 
 
+    /**
+     * 保存绘制后的图片
+     */
+    public Bitmap saveBitmap() {
+        Bitmap savepicture = Bitmap.createBitmap(pictureWidth, pictureHeight, Bitmap.Config.ARGB_4444);
+        Canvas canvas = new Canvas(savepicture);
+        if (basePicture != null)
+            canvas.drawBitmap(basePicture, 0, 0, null);
+        if (mDrawBit != null)
+            canvas.drawBitmap(mDrawBit, 0, 0, null);
+        canvas.save();
+        return savepicture;
+    }
+
+
     public void destory() {
         if (basePicture != null) {
             basePicture.recycle();
